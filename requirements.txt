@@ -3,3 +3,5 @@ djangorestframework-simplejwt==4.8.0
 psycopg2==2.9.1
 PyJWT==2.1.0
 django-phonenumber-field[phonenumberslite]
+gunicorn==20.1.0
+django-heroku==0.3.1
