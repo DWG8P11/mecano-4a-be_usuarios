@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'back_App',
+    'phonenumber_field',
+
 ]
 
 SIMPLE_JWT = {
@@ -100,11 +103,11 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 DATABASES = {
 'default': {
 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': '',
-'USER': '',
-'PASSWORD': '',
-'HOST': '',
-'PORT': '5432',
+'NAME': os.environ.get("BD_US_NAME"),
+'USER': os.environ.get("BD_US_USER"),
+'PASSWORD': os.environ.get("BD_US_PASSWORD"),
+'HOST': os.environ.get("BD_US_HOST"),
+'PORT': int(os.environ.get("BD_US_PORT")),
 }
 }
 
