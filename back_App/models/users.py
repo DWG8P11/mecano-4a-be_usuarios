@@ -1,8 +1,8 @@
-from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.hashers import make_password
+from django.db                     import models
+from django.contrib.auth.models    import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.hashers   import make_password
 
-from django.core.validators import MinLengthValidator
+from django.core.validators        import MinLengthValidator
 from phonenumber_field.modelfields import PhoneNumberField
 
 class UserManager(BaseUserManager):

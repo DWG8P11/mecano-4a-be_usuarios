@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'back_App',
+    'phonenumber_field',
+
 ]
 
 SIMPLE_JWT = {
@@ -103,11 +105,11 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get("DB_NAME"),
-        'USER': os.environ.get("DB_USER"),
-        'PASSWORD': os.environ.get("DB_PASSWORD"),
-        'HOST': os.environ.get("DB_HOST"),
-        'PORT': int(os.environ.get("DB_PORT")),
+        'NAME': os.environ.get("BD_US_NAME"),
+        'USER': os.environ.get("BD_US_USER"),
+        'PASSWORD': os.environ.get("BD_US_PASSWORD"),
+        'HOST': os.environ.get("BD_US_HOST"),
+        'PORT': int(os.environ.get("BD_US_PORT")),
     }
 }
 
