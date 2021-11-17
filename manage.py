@@ -6,7 +6,9 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend_project.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 
+                        # Para elegir a nivel de ambiente si usar settings the desarrollo (dev) o de produccion (prod)
+                        f'backend_project.settings-{os.environ.get("BACK_MECANO_USERS_TYPE")}')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

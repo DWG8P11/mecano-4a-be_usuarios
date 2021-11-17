@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 
+import os # Para lectura de las "variables de ambiente")
+import django_heroku # Para configuración automática necesaria para deployment en Heroku
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-@m@!^1gl(-3ai@f1z+9w9ur05wfqi6f#)4_@_5rj-#+p33j-ra
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] # https://nebulosa-qwerty-usuarios.herokuapp.com
 
 
 # Application definition
@@ -98,14 +101,14 @@ WSGI_APPLICATION = 'backend_project.wsgi.application'
 
 
 DATABASES = {
-'default': {
-'ENGINE': 'django.db.backends.postgresql_psycopg2',
-'NAME': '',
-'USER': '',
-'PASSWORD': '',
-'HOST': '',
-'PORT': '5432',
-}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': int(os.environ.get("DB_PORT")),
+    }
 }
 
 
@@ -151,3 +154,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+django_heroku.settings(locals())
