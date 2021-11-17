@@ -1,4 +1,4 @@
-from ..models import users
+from ..models       import users
 from rest_framework import serializers
  
 class UserSerializer(serializers.ModelSerializer):
@@ -22,8 +22,8 @@ class UserSerializer(serializers.ModelSerializer):
         '''
         user   = usuario.Usuario.objects.get(id = usuario.id)
         return {
-            "nombre" : user.nombre,
-            "correo" : user.email,
+            "nombre"       : user.nombre,
+            "correo"       : user.email,
             "administrador": user.is_staff
         }
 
