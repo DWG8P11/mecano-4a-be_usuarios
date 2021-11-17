@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /usuarios_be
 WORKDIR /usuarios_be
 # Copia los archivos necesarios a la carpeta de usuarios_be
-ADD back_App backend_project staticfiles manage.py README.md requirements.txt Dockerfile /usuarios_be/
+ADD . /usuarios_be/
 # Instala los requerimientos en el nuevo ambiente virtual
 RUN pip install -r requirements.txt
 # Se dice que por el puente 8080 se podra entrar a esta maquina virtual
