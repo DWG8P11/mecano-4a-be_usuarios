@@ -6,7 +6,7 @@ class UserSerializer(serializers.ModelSerializer):
         model  = users.Usuario
         # Datos que se podrán recibir al utilizar el serializador para
         # crear un usuario a partir de un JSON
-        fields = ['id','self', 'nombre','correo','telefono','pais','departamento','ciudad','usuario', 'contrasena','is_staff']
+        fields = ['id', 'nombre','correo','telefono','pais','departamento','ciudad','usuario', 'contrasena','is_staff']
  
     def create(self, validated_data):
         '''
