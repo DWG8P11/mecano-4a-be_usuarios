@@ -69,7 +69,7 @@ class Usuario(AbstractBaseUser):
     pais         = models.CharField       (verbose_name = 'País', max_length = 100)
     departamento = models.CharField       (verbose_name = 'Departamento', max_length = 100)
     ciudad       = models.CharField       (verbose_name = 'Ciudad', max_length = 100)
-    password     = models.CharField       (verbose_name = "Contraseña", max_length = 256, unique = True, blank = False, validators=[MinLengthValidator(6)])
+    password     = models.CharField       (verbose_name = "Contraseña", max_length = 256, blank = False, validators=[MinLengthValidator(6)])
     usuario      = models.CharField       (verbose_name = 'Usuario', max_length = 100, unique = True, blank = False, validators=[MinLengthValidator(4)])
     
     # Propiedad para saber si el usuario va a ser administrador de la aplicacion
