@@ -1,13 +1,10 @@
 # Aplicación: La Nebulosa de Qwerty - Backend Gestión de Usuarios
-Repositorio para el Backend de Gestión de Usuarios del Proyecto del Ciclo 4 del programa de formación MisiónTIC 2022 Cohorte 2021 por el Equipo 8 del Grupo 11 de Desarrollo Web.
 
-Se hace uso del framework de Python Django para el desarrollo de este módulo de la aplicación **La Nebulosa de Qwerty**. La comunicación con este módulo de la aplicación se lleva a cabo a través de una RESTful web API.
+**La Nebulosa de Qwerty** es una aplicación para aprender mecanografía de forma gradual, utilizando como material de aprendizaje y de motivación textos sobre la gran variedad de cuerpos celestes.
 
-Requerimientos:
-Django==3.2.8
-djangorestframework-simplejwt==4.8.0
-psycopg2==2.9.1
-PyJWT==2.1.0
+Este repositorio corresponde al módulo de backend de _Gestión de Usuarios_ de esta aplicación, desarrollada como proyecto del Ciclo 4 del programa de formación MisiónTIC 2022 Cohorte 2021, por el Equipo 8 del Grupo 11 de Desarrollo Web.
+
+Se hace uso del framework de Python Django para el desarrollo de este módulo, el cual posee una RESTful web API que permite la solicitud de realización operaciones a la aplicación a través de peticiones HTTP que tengan cuerpos en formato JSON.
 
 ## Software Necesario
 
@@ -15,16 +12,21 @@ Se requiere de Python 3.9 y un servidor del motor de bases de datos PostgreSQL.
 
 ## Instrucciones de instalación
 
-0.  Correr una terminal y ubicar su directorio a la raiz de este repositorio.
+0.  Abrir un shell de línea de comandos y ubicar su directorio en la raiz de este repositorio.
 
-1. Instalar las librerías requerimientos del proyecto: en la terminal, escribir
+1. Instalar las librerías de Python requeridas: en la terminal, escribir
 ```
 pip install -r requirements.txt
 ```
+Estas librerías son:
+- Django versión 3.2.8
+- djangorestframework-simplejwt versión 4.8.0
+- psycopg2 versión 2.9.1
+- PyJWT versión 2.1.0
 
 2. Tener un servidor de PostgreSQL corriendo, con una base de datos para la cual haya se conozcan las credenciales de un usuario con permisos de creación de tablas en ésta.
 
-3. Exportar las credenciales de la base de datos como _variables de entorno_: como se indica a continuación, entendiendo que cada nombre `<NOMBRE DE VARIABLE>` implica que se reemplace toda esta cadena por el valor adecuado de la base de datos
+3. Exportar las credenciales de la base de datos como _variables de entorno_: como se indica a continuación, entendiendo que cada nombre `<NOMBRE DE VARIABLE>` implica que se reemplace este texto por el valor que allí se indica
   - En Windows: si se está usando una terminal de PowerShell, ejecutar los siguientes comandos:
   ```
   $env:BACK_MECANO_USERS_TYPE = '<Tipo de servidor deseado: 'dev' para servidor de desarrollo, 'prod' para servidor de produccion>'
@@ -36,16 +38,16 @@ pip install -r requirements.txt
   ```
   - En sistemas operativos basados en Unix:
   ```
-  $export BACK_MECANO_USERS_TYPE='<Tipo de servidor deseado: 'dev' para servidor de desarrollo, 'prod' para servidor de produccion>'
-  $export BD_US_NAME='<Nombre de la base de datos>'
-  $export BD_US_USER='<Usuario de la base de datos>'
-  $export BD_US_PASSWORD='<Contraseña del usuario>'
-  $export BD_US_HOST='<URL del servidor con la base de datos>'
-  $export BD_US_PORT=<Puerto para acceso a PostgreSQL>
+  export BACK_MECANO_USERS_TYPE='<Tipo de servidor deseado: 'dev' para servidor de desarrollo, 'prod' para servidor de produccion>'
+  export BD_US_NAME='<Nombre de la base de datos>'
+  export BD_US_USER='<Usuario de la base de datos>'
+  export BD_US_PASSWORD='<Contraseña del usuario>'
+  export BD_US_HOST='<URL del servidor con la base de datos>'
+  export BD_US_PORT=<Puerto para acceso a PostgreSQL>
   ```
 
 
-4. Migrar las tablas necesarias a la base de datos: con terminal de comandos sobre la raiz del repositio escribir
+4. Migrar las tablas necesarias a la base de datos: en el shell de comandos sobre la raiz ejecutar los siguientes comandos
 ```
 python manage.py makemigrations
 python manage.py migrate
@@ -56,11 +58,11 @@ python manage.py migrate
 
 Una vez la aplicación ha sido instalada:
 
-0. Abrir una terminal y ubicar su directorio en la raiz de este repositorio en el servidor en el que se instaló la aplicación.
+0. Abrir un shell de línea de comandos y ubicar su directorio en la raiz de este repositorio en el servidor en el que se instaló la aplicación.
 
-1. Exportar como variables de entorno las credenciales de la base de datos, para un usuario con permisos de selección, inserción y eliminación de datos en las tablas de la base de dato.
+1. Exportar como variables de entorno las credenciales de la base de datos, para un usuario con permisos de selección, inserción y eliminación de datos en sus tablas.
 
-2. Correr la aplicación y habilitar la comunicación con ésta a través de un puerto:
+2. Ejecutar la aplicación y habilitar la comunicación con ésta a través de un puerto:
 ```
 python manage.py runserver <Puerto para acceso a la aplicacion>
 ```
