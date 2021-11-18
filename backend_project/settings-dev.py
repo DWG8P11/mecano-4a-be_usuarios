@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'back_App',
-    'phonenumber_field',
 
 ]
 
@@ -77,6 +76,7 @@ REST_FRAMEWORK = {
 'rest_framework_simplejwt.authentication.JWTAuthentication',
 )
 }
+AUTH_USER_MODEL='back_App.Usuario'
 
 ROOT_URLCONF = 'backend_project.urls'
 
