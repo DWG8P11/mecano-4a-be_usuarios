@@ -19,14 +19,14 @@ class UserManager(BaseUserManager):
         # utilizamos el método .create_superuser que tiene ese propósito
             #No se incluye contrasena para posteriormente encriptarla
             return self.create_superuser(nombre = nombre, correo=correo,telefono=telefono,pais=pais,departamento=departamento,ciudad= ciudad,usuario=usuario,contrasena=contrasena)
-        usuario        = self.model()
-        usuario.correo = self.normalize_email(correo)
-        nombre         = nombre
-        telefono       = telefono
-        pais           = pais
-        departamento   = departamento
-        ciudad         = ciudad
-        usuario        = usuario
+        usuario                = self.model()
+        usuario.correo         = self.normalize_email(correo)
+        usuario.nombre         = nombre
+        usuario.telefono       = telefono
+        usuario.pais           = pais
+        usuario.departamento   = departamento
+        usuario.ciudad         = ciudad
+        usuario.usuario        = usuario
 
         # Agregar contrasena a la info del usuario, encriptándola
         
