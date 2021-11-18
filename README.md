@@ -12,7 +12,7 @@ Se requiere de Python 3.9 y un servidor del motor de bases de datos PostgreSQL.
 
 ## Instrucciones de instalación
 
-0.  Abrir un shell de línea de comandos y ubicar su directorio en la raiz de este repositorio.
+0.  Abrir un shell de línea de comandos y ubicar su directorio en la raíz de este repositorio.
 
 1. Instalar las librerías de Python requeridas: en la terminal, escribir
 ```
@@ -86,7 +86,7 @@ Los siguientes endpoints están habilitados para realizar peticiones HTTP a la a
 ```
 {
     "access": "<Token de acceso>",
-    "refres": "<Token de actualización de tokens de acceso>"
+    "refresh": "<Token de actualización de tokens de acceso>"
 }
 ```
 - `user/`
@@ -135,4 +135,3 @@ Los siguientes endpoints están habilitados para realizar peticiones HTTP a la a
     "access": <Token de acceso válido para el usuario>
  }
 ```
-
