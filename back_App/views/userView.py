@@ -29,17 +29,17 @@ class UserDetailView(generics.RetrieveAPIView):
 	serializer_class   = UserSerializer
 	permission_classes = (IsAuthenticated,)
 
-	def get(self, request, *args, **kwargs):
+	def get(self, request, pk):
 
 		token = request.META.get('HTTP_AUTHORIZATION')[7:]
 		
 		tokenBackend     = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
 		token_valid_data = tokenBackend.decode(token,verify=False)
 		
-		if token_valid_data['user_id'] != kwargs['id_user_url']:
-			stringResponse = {'detail':'Unauthorized Request'}
+		if token_valid_data['user_id'] != pk:
+			stringResponse = {'detail':'No tiene permisos para ver la informacion de este usuario'}
 
 			return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
-		return super().get(request, *args, **kwargs)
+		return super().get(request, pk)
 
 

@@ -20,7 +20,7 @@ class UserSerializer(serializers.ModelSerializer):
         '''
         Método para crear un JSON a partir de un usuario existente
         '''
-        user   = usuario.Usuario.objects.get(id = usuario.id)
+        user   = users.Usuario.objects.get(id = usuario.id)
         return {
             "usuario"      : user.usuario,
             "nombre"       : user.nombre,
