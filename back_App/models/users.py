@@ -9,7 +9,7 @@ class UserManager(BaseUserManager):
 
     '''
     
-    def create_user(self, nombre,correo,telefono,pais,departamento,ciudad,usuario, contrasena, is_staff = False): 
+    def create_user(self, nombre,correo,telefono,pais,departamento,ciudad,usuario, password, is_staff = False): 
         # Los argumentos son todos los datos que queremos ingrese el usuario al registrarse
         """
         Creación de un nuevo usuario
@@ -31,12 +31,12 @@ class UserManager(BaseUserManager):
         # Agregar contrasena a la info del usuario, encriptándola
         
         sal = 'condimento'
-        usuario.password = make_password(contrasena, sal)
+        usuario.password = make_password(password, sal)
         # Guardar en base de datos
         usuario.save(using = self._db)
         return usuario
  
-    def create_superuser(self, nombre,correo,telefono,pais,departamento,ciudad,usuario, contrasena):
+    def create_superuser(self, nombre,correo,telefono,pais,departamento,ciudad,usuario, password):
         '''
         Método que se llamará cuando se quiera crear un usuario administrador de la App
         '''
@@ -49,7 +49,7 @@ class UserManager(BaseUserManager):
             departamento = departamento,
             ciudad       = ciudad,
             usuario      = usuario,
-            password     = contrasena,
+            password     = password,
            
         )
  
