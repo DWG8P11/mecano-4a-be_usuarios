@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
         # is_staff será el atributo que indicará si el usuario es o no admin, y en ese caso
         # utilizamos el método .create_superuser que tiene ese propósito
             #No se incluye contrasena para posteriormente encriptarla
-            return self.create_superuser(nombre = nombre, correo=correo,telefono=telefono,pais=pais,departamento=departamento,ciudad= ciudad,usuario=usuario,contrasena=contrasena)
+            return self.create_superuser(nombre = nombre, correo=correo,telefono=telefono,pais=pais,departamento=departamento,ciudad= ciudad,usuario=usuario,password=password)
         usuario                = self.model()
         usuario.correo         = self.normalize_email(correo)
         usuario.nombre         = nombre
