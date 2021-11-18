@@ -31,7 +31,7 @@ class UserManager(BaseUserManager):
         # Agregar contrasena a la info del usuario, encriptándola
         
         sal = 'condimento'
-        usuario.contrasena = make_password(contrasena, sal)
+        usuario.password = make_password(contrasena, sal)
         # Guardar en base de datos
         usuario.save(using = self._db)
         return usuario
@@ -49,7 +49,7 @@ class UserManager(BaseUserManager):
             departamento = departamento,
             ciudad       = ciudad,
             usuario      = usuario,
-            contrasena   = contrasena,
+            password     = contrasena,
            
         )
  
@@ -69,7 +69,7 @@ class Usuario(AbstractBaseUser):
     pais         = models.CharField       (verbose_name = 'País', max_length = 100)
     departamento = models.CharField       (verbose_name = 'Departamento', max_length = 100)
     ciudad       = models.CharField       (verbose_name = 'Ciudad', max_length = 100)
-    contrasena   = models.CharField       (verbose_name = "Contraseña", max_length = 256, unique = True, blank = False, validators=[MinLengthValidator(6)])
+    password     = models.CharField       (verbose_name = "Contraseña", max_length = 256, unique = True, blank = False, validators=[MinLengthValidator(6)])
     usuario      = models.CharField       (verbose_name = 'Usuario', max_length = 100, unique = True, blank = False, validators=[MinLengthValidator(4)])
     
     # Propiedad para saber si el usuario va a ser administrador de la aplicacion

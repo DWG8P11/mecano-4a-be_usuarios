@@ -1,12 +1,12 @@
-from ..models       import users
-from rest_framework import serializers
+from ..models               import users
+from rest_framework         import serializers
  
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model  = users.Usuario
         # Datos que se podrán recibir al utilizar el serializador para
         # crear un usuario a partir de un JSON
-        fields = ['id', 'nombre','correo','telefono','pais','departamento','ciudad','usuario', 'contrasena','is_staff']
+        fields = ['id', 'nombre','correo','telefono','pais','departamento','ciudad','usuario', 'password','is_staff']
  
     def create(self, validated_data):
         '''
@@ -22,8 +22,14 @@ class UserSerializer(serializers.ModelSerializer):
         '''
         user   = usuario.Usuario.objects.get(id = usuario.id)
         return {
+            "usuario"      : user.usuario,
             "nombre"       : user.nombre,
-            "correo"       : user.email,
-            "administrador": user.is_staff
+            "correo"       : user.correo,
+            "administrador": user.is_staff,
+            "telefono"     : user.telefono,
+            "pais"         : user.pais,
+            "departamento" : user.departamento,
+            "ciudad"       : user.ciudad,
+           
         }
 
