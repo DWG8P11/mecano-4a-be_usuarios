@@ -4,8 +4,6 @@ from back_App.serializers                 import UserSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.conf                          import settings
 from rest_framework                       import generics, status
-from rest_framework_simplejwt.backends    import TokenBackend
-from rest_framework.permissions           import IsAuthenticated
 from back_App.models.users                import Usuario
 
 
@@ -27,19 +25,21 @@ class UserDetailView(generics.RetrieveAPIView):
 
 	queryset           = Usuario.objects.all()
 	serializer_class   = UserSerializer
-	permission_classes = (IsAuthenticated,)
 
-	def get(self, request, pk):
+class UserUpdateView(generics.UpdateAPIView):
 
-		token = request.META.get('HTTP_AUTHORIZATION')[7:]
-		
-		tokenBackend     = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-		token_valid_data = tokenBackend.decode(token,verify=False)
-		
-		if token_valid_data['user_id'] != pk:
-			stringResponse = {'detail':'No tiene permisos para ver la informacion de este usuario'}
+	queryset           = Usuario.objects.all()
+	serializer_class   = UserSerializer
+	def update(self, request, *args, **kwargs):
+		return super().update(self, request, *args, **kwargs)
 
-			return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
-		return super().get(request, pk)
+class UserDeleteView(generics.DestroyAPIView):
 
+	queryset           = Usuario.objects.all()
+	serializer_class   = UserSerializer
+	def delete(self, request, *args, **kwargs):
+		return super().destroy(self, request, *args, **kwargs)
+	
+	
 
+	
