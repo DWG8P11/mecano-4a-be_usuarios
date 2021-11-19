@@ -2,7 +2,6 @@ from rest_framework                       import status, views
 from rest_framework.response              import Response
 from back_App.serializers                 import UserSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from django.conf                          import settings
 from rest_framework                       import generics, status
 from back_App.models.users                import Usuario
 
