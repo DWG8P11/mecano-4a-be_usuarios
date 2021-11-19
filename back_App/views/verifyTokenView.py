@@ -13,7 +13,7 @@ class VerifyTokenView(TokenVerifyView):
 
         try:
             serializer.is_valid(raise_exception=True)
-            token_data = token_backend.decode(request.data['token'], verify=False)
+            token_data = tokenbackend.decode(request.data['token'], verify=False)
             serializer.validated_data ['UserId'] = token_data ['user_id']
 
         except TokenError as e:
