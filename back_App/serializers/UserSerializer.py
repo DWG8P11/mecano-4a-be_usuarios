@@ -22,6 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
         '''
         user   = users.Usuario.objects.get(id = usuario.id)
         return {
+            "id"           : user.id,
             "usuario"      : user.usuario,
             "nombre"       : user.nombre,
             "correo"       : user.correo,
