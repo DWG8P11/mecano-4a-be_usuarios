@@ -19,29 +19,29 @@ class UserManager(BaseUserManager):
         # utilizamos el método .create_superuser que tiene ese propósito
             #No se incluye contrasena para posteriormente encriptarla
             return self.create_superuser(nombre = nombre, correo=correo,telefono=telefono,pais=pais,departamento=departamento,ciudad= ciudad,usuario=usuario,password=password)
-        usuario                = self.model()
-        usuario.correo         = self.normalize_email(correo)
-        usuario.nombre         = nombre
-        usuario.telefono       = telefono
-        usuario.pais           = pais
-        usuario.departamento   = departamento
-        usuario.ciudad         = ciudad
-        usuario.usuario        = usuario
+        usuarioM                = self.model()
+        usuarioM.correo         = self.normalize_email(correo)
+        usuarioM.nombre         = nombre
+        usuarioM.telefono       = telefono
+        usuarioM.pais           = pais
+        usuarioM.departamento   = departamento
+        usuarioM.ciudad         = ciudad
+        usuarioM.usuario        = usuario
 
         # Agregar contrasena a la info del usuario, encriptándola
         
         sal = 'condimento'
-        usuario.password = make_password(password, sal)
+        usuarioM.password = make_password(password, sal)
         # Guardar en base de datos
-        usuario.save(using = self._db)
-        return usuario
+        usuarioM.save(using = self._db)
+        return usuarioM
  
     def create_superuser(self, nombre,correo,telefono,pais,departamento,ciudad,usuario, password):
         '''
         Método que se llamará cuando se quiera crear un usuario administrador de la App
         '''
         # Crear un usuario comun y corriente
-        usuario          = self.create_user(
+        usuarioM          = self.create_user(
             correo       = correo, 
             nombre       = nombre,
             telefono     = telefono,
@@ -54,10 +54,10 @@ class UserManager(BaseUserManager):
         )
  
         # Cambiar a True la propiedad de que es admin
-        usuario.is_staff = True
+        usuarioM.is_staff = True
        
         # Guardar en base de datos
-        usuario.save(using = self._db)
+        usuarioM.save(using = self._db)
  
         return usuario
  
