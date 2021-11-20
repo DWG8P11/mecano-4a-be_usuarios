@@ -8,7 +8,7 @@ from back_App.views.verifyTokenView import VerifyTokenView
 
 urlpatterns = [
     path('admin/',         admin.site.urls),
-    path('verifyToken/',   VerifyTokenView.as_view),
+    path('verifyToken/',   VerifyTokenView.as_view()),
     path('login/',         TokenObtainPairView.as_view()),
     path('refresh/',       TokenRefreshView.as_view()),
     path('user/',          UserCreateView.as_view()),
