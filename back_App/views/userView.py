@@ -3,6 +3,7 @@ from rest_framework.response              import Response
 from back_App.serializers                 import UserSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework                       import generics, status
+from rest_framework.permissions           import IsAuthenticated
 from back_App.models.users                import Usuario
 
 
@@ -24,11 +25,14 @@ class UserDetailView(generics.RetrieveAPIView):
 
 	queryset           = Usuario.objects.all()
 	serializer_class   = UserSerializer
+	permission_classes = (IsAuthenticated,)
 
 class UserUpdateView(generics.UpdateAPIView):
 
 	queryset           = Usuario.objects.all()
 	serializer_class   = UserSerializer
+	permission_classes = (IsAuthenticated,)
+
 	def update(self, request, *args, **kwargs):
 		return super().update(self, request, *args, **kwargs)
 
@@ -36,6 +40,8 @@ class UserDeleteView(generics.DestroyAPIView):
 
 	queryset           = Usuario.objects.all()
 	serializer_class   = UserSerializer
+	permission_classes = (IsAuthenticated,)
+	
 	def delete(self, request, *args, **kwargs):
 		return super().destroy(self, request, *args, **kwargs)
 	
