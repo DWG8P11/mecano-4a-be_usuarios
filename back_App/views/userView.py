@@ -5,6 +5,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework                       import generics, status
 from rest_framework.permissions           import IsAuthenticated
 from back_App.models.users                import Usuario
+from rest_framework.permissions			  import IsAuthenticated
 
 
 class UserCreateView(views.APIView):

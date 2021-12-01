@@ -101,7 +101,7 @@ Los siguientes endpoints están habilitados para realizar peticiones HTTP a la a
     "departamento": "<Departamento, en caso de que el país sea Colombia>",
     "ciudad": "<Ciudad>",
     "password": "<Contraseña>",
-    "is_staff": <true o false, con true para indicar que el usuario creado seá administrador de la aplicación>
+    "is_staff": <true o false, con true para indicar que el usuario creado sea administrador de la aplicación>
 }
 ```
     Si el usuario es creado exitosamente, el usuario es automáticamente autenticado y la respuesta de la petición HTTP retorna tokens de acceso y actualización con un cuerpo en formato JSON como se indicó en el numeral de `login/`
@@ -117,21 +117,29 @@ Los siguientes endpoints están habilitados para realizar peticiones HTTP a la a
     "pais": "<País>",
     "departamento": "<Departamento, en caso de que el país sea Colombia>",
     "ciudad": "<Ciudad>",
-    "password": "<Contraseña>",
-    "is_staff": <true o false, con true para indicar que el usuario creado seá administrador de la aplicación>
+    "administrador": <true o false, con true para indicar que el usuario creado sea administrador de la aplicación>
 }
 ```
 
 - `refresh/`:
   - Petición tipo `POST`: permite la creación de un token de acceso para un usuario, al aportar un token de actualizado válido de este usuario. El cuerpo de la petición debe tener la siguiente estructura tipo JSON:
  ```
- {
+{
     "refresh": <Token de actualización válido de un usuario>
- }
+}
  ```
     El cuerpo de la respuesta a esta petición HTTP tiene la siguiente estructura:
 ```
- {
+{
     "access": <Token de acceso válido para el usuario>
- }
+}
+```
+
+- `verifyToken/`:
+  - Petición tipo `POST`: permite averiguar el número de identificación único del usuario que se encuentra autenticado. El cuerpo de la petición debe contener el token de acceso con el siguiente formato tipo JSON:
+```
+{
+    "token": <Token de acceso válido para el usuario>
+}
+
 ```
