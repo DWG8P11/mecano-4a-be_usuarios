@@ -65,10 +65,10 @@ class Usuario(AbstractBaseUser):
     id           = models.BigAutoField    (primary_key = True)
     nombre       = models.CharField       (verbose_name = 'Nombre completo', max_length = 100, blank = False, validators=[MinLengthValidator(4)])
     correo       = models.EmailField      (verbose_name = "Correo electrónico", max_length = 100, unique = True, blank = False, validators=[MinLengthValidator(4)])
-    telefono     = models.BigIntegerField (verbose_name = "Teléfono de contacto",null=False, blank=False,validators=[MinValueValidator(0)])
-    pais         = models.CharField       (verbose_name = 'País', max_length = 100)
-    departamento = models.CharField       (verbose_name = 'Departamento', max_length = 100)
-    ciudad       = models.CharField       (verbose_name = 'Ciudad', max_length = 100)
+    telefono     = models.BigIntegerField (verbose_name = "Teléfono de contacto",null=True, blank=False,validators=[MinValueValidator(0)])
+    pais         = models.CharField       (verbose_name = 'País', max_length = 100, null = True)
+    departamento = models.CharField       (verbose_name = 'Departamento o Estado', max_length = 100, null = True)
+    ciudad       = models.CharField       (verbose_name = 'Ciudad', max_length = 100, null = True)
     password     = models.CharField       (verbose_name = "Contraseña", max_length = 256, blank = False, validators=[MinLengthValidator(6)])
     usuario      = models.CharField       (verbose_name = 'Usuario', max_length = 100, unique = True, blank = False, validators=[MinLengthValidator(4)])
     
@@ -81,7 +81,7 @@ class Usuario(AbstractBaseUser):
     USERNAME_FIELD = 'correo'
    
     # Estos son los atributos los pedirá django al momento de decirle createsuperuser
-    REQUIRED_FIELDS = ['nombre']
+    REQUIRED_FIELDS = ['nombre', 'usuario']
  
     
 
