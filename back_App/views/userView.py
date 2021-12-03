@@ -1,7 +1,7 @@
 from rest_framework                       import status, views
 from rest_framework.response              import Response
 from back_App.serializers                 import UserSerializer
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from back_App.serializers 			      import MiTokenObtainPairSerializer
 from rest_framework                       import generics, status
 from rest_framework.permissions           import IsAuthenticated
 from back_App.models.users                import Usuario
@@ -18,7 +18,7 @@ class UserCreateView(views.APIView):
 		tokenData = {"correo":request.data ["correo"],
 		"password":request.data["password"]} 
 	
-		tokenSerializer = TokenObtainPairSerializer(data=tokenData)
+		tokenSerializer = MiTokenObtainPairSerializer(data=tokenData)
 		tokenSerializer.is_valid(raise_exception=True)
 		return Response(tokenSerializer.validated_data,status=status.HTTP_201_CREATED)
 
