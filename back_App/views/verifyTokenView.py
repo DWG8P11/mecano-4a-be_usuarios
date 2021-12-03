@@ -15,6 +15,8 @@ class VerifyTokenView(TokenVerifyView):
             serializer.is_valid(raise_exception=True)
             token_data = tokenbackend.decode(request.data['token'], verify=False)
             serializer.validated_data ['UserId'] = token_data ['user_id']
+            serializer.validated_data ['usuario'] = token_data ['usuario']
+            serializer.validated_data ['administrador'] = token_data ['administrador']
 
         except TokenError as e:
             print(e)
