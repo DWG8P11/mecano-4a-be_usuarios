@@ -34,8 +34,11 @@ class UserUpdateView(generics.UpdateAPIView):
 	serializer_class   = UserSerializer
 	permission_classes = (IsAuthenticated,)
 
-	def update(self, request, *args, **kwargs):
-		return super().update(self, request, *args, **kwargs)
+	# def update(self, request, *args, **kwargs):
+	# 	return super().update(self, request, *args, **kwargs)
+
+	# def patch(self, request, *args, **kwargs):
+	# 	return super().patch(self, request, *args, **kwargs)
 
 class UserDeleteView(generics.DestroyAPIView):
 
